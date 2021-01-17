@@ -5,40 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simón Dice</title>
   <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,400&family=Yusei+Magic&display=swap" rel="stylesheet"> 
 </head>
 <body>
-
-  <header class="header">
-
-    <div class="header__titulo">
-      <h1>SIMÓN DICE</h1>
-    </div>
+  
+  <div class="container">
     
-    <nav class="nav">
-      <button class="nav__btn">Jugar</button>
-      <button class="nav__btn">Reiniciar</button>
-    </nav>
+    <header class="header">
+    
+      <div class="header__titulo">
+        <h1>SIMÓN DICE</h1>
+      </div>
+          
+    </header>
+    
+    
+    <div class="section">
+    
+      <div class="tablero">
+        <div class="tablero__piezas" data-pieza="num-1"></div>
+        <div class="tablero__piezas" data-pieza="num-2"></div>
+        <div class="tablero__piezas" data-pieza="num-3"></div>
+        <div class="tablero__piezas" data-pieza="num-4"></div>
+      </div>
+    
+      <nav class="nav">
+        <button class="nav__btn" id="btn-jugar">Jugar</button>
+        <button class="nav__btn" id="btn-reiniciar" disabled>Reiniciar</button>
+      </nav>
 
-  </header>
-
-
-  <section>
-
-    <div class="tablero">
-      <div class="tablero__piezas"></div>
-      <div class="tablero__piezas"></div>
-      <div class="tablero__piezas"></div>
-      <div class="tablero__piezas"></div>
     </div>
 
-  </section>
+  </div>
+
+  <div class="ventana ventana-cerrar">
+    <div class="ventana-container">
+      <div class="ventana__contenido">
+
+        <div class="ventana__texto">
+          <h1>Lorem ipsum dolor sit.</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem quo quia odit aut amet accusantium, unde fugit at omnis dolorum doloremque expedita blanditiis suscipit quas! </p>
+        </div>
+
+        <button class="ventana__btn" id="btn-ventana">Continuar</button>
+
+      </div>
+    </div>
+  </div>
+
 
   <!-- Codigo JS -->
-  <script src="main.js"></script>
+  <script src="./main.js"></script>
 
 </body>
 </html>

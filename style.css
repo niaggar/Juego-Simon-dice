@@ -5,22 +5,157 @@
   margin: 0;
   text-decoration: none;
   list-style: none;
-  /* font-family: 'Montserrat', sans-serif; */
   font-family: 'Yusei Magic', sans-serif;
 }
 
 body {
-  background: #13294b;
   color: #080e2c;
+  font-size: 16px;
+}
+
+.container {
+  background: #13294b;
+  width: 100vw;
+  height: 100vh;
 }
 
 header {
   width: 100vw;
-  height: 10rem;
-  background: #ecf4f1;
+  height: 7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  color: #ecf4f1;
 }
+
+.header__titulo {
+  padding: 5px;
+  border-bottom: 2px solid #ecf4f1;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  margin: auto;
+}
+
+.tablero  {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tablero__piezas {
+  width: 170px;
+  height: 170px;
+  border: 2px solid #ecf4f1;
+  border-radius: 20px;
+  color: #ecf4f1;
+  font-size: 3rem;
+}
+
+.nav {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__btn {
+  width: 170px;
+  height: 3em;
+  border-radius: 20px;
+  background: none;
+  color: #ecf4f1;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  border: 2px solid #ecf4f1;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.nav__btn:focus {
+  outline: none;
+}
+
+.nav__btn:active {
+  border: 4px solid #ecf4f1;
+  background: #ecf4f148;
+  transition-duration: .1s;
+}
+
+.nav__btn:disabled {
+  border: 2px solid #ecf4f148;
+  color: #ecf4f148;
+  cursor: auto;
+}
+
+/* VENTANA */
+
+.ventana-cerrar {
+  visibility: hidden;
+}
+
+.ventana {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ecf4f13b;
+}
+
+.ventana-container {
+  background: #ecf4f1;
+  width: 580px;
+  height: 300px;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.ventana__contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.ventana__texto {
+  text-align: center;
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.ventana__btn {
+  width: 500px;
+  height: 3em;
+  border-radius: 20px;
+  background: none;
+  color: #080e2c;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  border: 2px solid #080e2c;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.ventana__btn:focus {
+  outline: none;
+}
+
+.ventana__btn:active {
+  border: 4px solid #080e2c;
+  background: #080e2c6b;
+  transition-duration: .1s;
+}
+
