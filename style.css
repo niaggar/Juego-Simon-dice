@@ -1,0 +1,26 @@
+
+*, body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Yusei Magic', sans-serif;
+}
+
+body {
+  background: #13294b;
+  color: #080e2c;
+}
+
+header {
+  width: 100vw;
+  height: 10rem;
+  background: #ecf4f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
