@@ -5,14 +5,37 @@ const btnRestart = document.getElementById( 'btn-restart' )
 
 var newGame
 
+window.addEventListener( 'load',() => {
+  btnRestart.disabled = true
+} )
+
 btnStart.addEventListener( 'click', () => {
   newGame = new game()
+  btnRestart.disabled = false
   console.log( 'Start game' )
 } )
 
 btnRestart.addEventListener( 'click', () => {
-  newGame = new game()
-  console.log( 'Restart game' )
+  
+  return new Promise( function( resolve, reject ){
+    var data = prompt('Prueba')
+
+    if (data == 'yes') {
+      resolve()
+    } else {
+      reject('invalid data')
+    }
+
+  } ).then( () => {
+    console.log( 'Restarting the game' )
+    setTimeout( () => {
+      newGame = new game()
+    }, 2000)
+
+  } ).catch( value => {
+    console.log(value)
+  })
+
 } )
 
 
@@ -24,8 +47,19 @@ class game {
   
   start() {
     this.createNewSequence = this.createNewSequence.bind(this)
+    this.showSequence = this.showSequence.bind(this)
     this.createNewSequence()
     this.showSequence()
+    // this.desactivateButton()
+
+    btnStart.disabled = true
+    btnRestart.disabled = true
+  }
+
+  desactivateButton() {
+    if (btnRestart.disabled) {
+      btnRestart.disabled = false
+    }
   }
 
   createNewSequence() {
@@ -34,6 +68,10 @@ class game {
 
   level() {
     this.actualLevel = 0
+  }
+
+  showSequence() {
+    console.log(this.sequence)
   }
 
 }
