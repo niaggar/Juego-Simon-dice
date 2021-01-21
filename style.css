@@ -106,6 +106,7 @@ header {
 
 .ventana-cerrar {
   visibility: hidden;
+  transition-duration: .4s;
 }
 
 .ventana {

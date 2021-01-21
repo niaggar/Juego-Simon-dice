@@ -3,6 +3,11 @@
 const btnStart = document.getElementById( 'btn-start' )
 const btnRestart = document.getElementById( 'btn-restart' )
 
+const btnModalYes = document.getElementById( 'btn-ventana-yes' )
+const btnModalNo = document.getElementById( 'btn-ventana-no' )
+
+const modalRestart = document.getElementById( 'modal-restart' )
+
 var newGame
 
 window.addEventListener( 'load',() => {
@@ -11,29 +16,34 @@ window.addEventListener( 'load',() => {
 
 btnStart.addEventListener( 'click', () => {
   newGame = new game()
-  btnRestart.disabled = false
   console.log( 'Start game' )
 } )
+
 
 btnRestart.addEventListener( 'click', () => {
   
   return new Promise( function( resolve, reject ){
-    var data = prompt('Prueba')
 
-    if (data == 'yes') {
-      resolve()
-    } else {
-      reject('invalid data')
-    }
-
-  } ).then( () => {
-    console.log( 'Restarting the game' )
+    modalRestart.classList.toggle( 'ventana-cerrar' )
+    
+    btnModalYes.addEventListener( 'click', () => {
+      resolve( 'Restarting the game...' )
+    } )
+    btnModalNo.addEventListener( 'click', () => {
+      reject( 'Cancel' )
+    } )
+    
+    
+  } ).then( value => {
+    console.log( value )
+    modalRestart.classList.toggle( 'ventana-cerrar' )
     setTimeout( () => {
       newGame = new game()
     }, 2000)
-
+    
   } ).catch( value => {
-    console.log(value)
+    console.log( value )
+    modalRestart.classList.toggle( 'ventana-cerrar' )
   })
 
 } )
@@ -51,9 +61,8 @@ class game {
     this.createNewSequence()
     this.showSequence()
     // this.desactivateButton()
-
     btnStart.disabled = true
-    btnRestart.disabled = true
+    btnRestart.disabled = false
   }
 
   desactivateButton() {
@@ -75,3 +84,7 @@ class game {
   }
 
 }
+
+
+
+
