@@ -44,6 +44,13 @@ header {
   margin: auto;
 }
 
+.level__text {
+  font-size: 1.8em;
+  color: #ecf4f1;
+  margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .tablero  {
   display: grid;
   grid-template-columns: 1fr 1fr;
