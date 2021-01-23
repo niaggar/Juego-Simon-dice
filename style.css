@@ -65,6 +65,12 @@ header {
   border-radius: 20px;
   color: #ecf4f1;
   font-size: 3rem;
+  transition-duration: 1s;
+}
+
+.tablero__pieza-iluminada {
+  background: #ecf4f18a;
+  box-shadow: 0 0 5px #ecf4f1;
 }
 
 .nav {
