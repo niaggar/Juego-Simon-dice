@@ -25,17 +25,25 @@
     
     
     <div class="section">
+
+      <div class="level-container">
+        <div class="level">
+          <h3 class="level__text">
+            Level: <span id="text-level">00</span>
+          </h3>
+        </div>
+      </div>
     
       <div class="tablero">
-        <div class="tablero__piezas" data-pieza="num-1"></div>
-        <div class="tablero__piezas" data-pieza="num-2"></div>
-        <div class="tablero__piezas" data-pieza="num-3"></div>
-        <div class="tablero__piezas" data-pieza="num-4"></div>
+        <div class="tablero__piezas" data-pieza="num-1" id="num-1"></div>
+        <div class="tablero__piezas" data-pieza="num-2" id="num-2"></div>
+        <div class="tablero__piezas" data-pieza="num-3" id="num-3"></div>
+        <div class="tablero__piezas" data-pieza="num-4" id="num-4"></div>
       </div>
     
       <nav class="nav">
-        <button class="nav__btn" id="btn-jugar">Jugar</button>
-        <button class="nav__btn" id="btn-reiniciar" disabled>Reiniciar</button>
+        <button class="nav__btn" id="btn-start">Start</button>
+        <button class="nav__btn" id="btn-restart" disabled>Restar</button>
       </nav>
 
     </div>
@@ -52,6 +60,21 @@
         </div>
 
         <button class="ventana__btn" id="btn-ventana">Continuar</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-restart" class="ventana ventana-cerrar">
+    <div class="ventana-container">
+      <div class="ventana__contenido">
+
+        <div class="ventana__texto">
+          <h1>Do you want restart the game?</h1>
+        </div>
+        
+        <button class="ventana__btn" id="btn-ventana-yes">Yes</button>
+        <button class="ventana__btn" id="btn-ventana-no">No</button>
 
       </div>
     </div>

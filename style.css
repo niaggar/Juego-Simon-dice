@@ -44,6 +44,13 @@ header {
   margin: auto;
 }
 
+.level__text {
+  font-size: 1.8em;
+  color: #ecf4f1;
+  margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .tablero  {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -58,6 +65,12 @@ header {
   border-radius: 20px;
   color: #ecf4f1;
   font-size: 3rem;
+  transition-duration: 1s;
+}
+
+.tablero__pieza-iluminada {
+  background: #ecf4f18a;
+  box-shadow: 0 0 5px #ecf4f1;
 }
 
 .nav {
@@ -99,6 +112,7 @@ header {
 
 .ventana-cerrar {
   visibility: hidden;
+  transition-duration: .4s;
 }
 
 .ventana {
@@ -147,6 +161,7 @@ header {
   border: 2px solid #080e2c;
   cursor: pointer;
   font-size: 1.2rem;
+  margin: 5px 0;
 }
 
 .ventana__btn:focus {
