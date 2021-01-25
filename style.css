@@ -65,7 +65,7 @@ header {
   border-radius: 20px;
   color: #ecf4f1;
   font-size: 3rem;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
 }
 
 .tablero__pieza-iluminada {
