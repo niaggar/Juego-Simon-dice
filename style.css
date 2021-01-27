@@ -21,7 +21,7 @@ body {
 
 header {
   width: 100vw;
-  height: 7rem;
+  height: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -177,4 +177,16 @@ header {
 .ocultar {
   visibility: hidden;
   position: absolute;
+}
+
+footer {
+  width: 100vw;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #ecf4f149;
+  font-weight: 200;
+}
+
+footer span {
+  color: #ecf4f19c;
 }
