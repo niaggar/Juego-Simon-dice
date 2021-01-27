@@ -130,7 +130,7 @@ header {
 .ventana-container {
   background: #ecf4f1;
   width: 580px;
-  height: 300px;
+  height: auto;
   padding: 30px;
   border-radius: 20px;
 }
@@ -174,3 +174,7 @@ header {
   transition-duration: .1s;
 }
 
+.ocultar {
+  visibility: hidden;
+  position: absolute;
+}

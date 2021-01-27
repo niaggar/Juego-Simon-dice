@@ -6,12 +6,19 @@ const btnRestart = document.getElementById( 'btn-restart' )
 const btnModalYes = document.getElementById( 'btn-ventana-yes' )
 const btnModalNo = document.getElementById( 'btn-ventana-no' )
 
-const modalRestart = document.getElementById( 'modal-restart' )
+const modal = document.getElementById( 'modal-restart' )
 const table = document.querySelector( '.tablero' )
 
+const txtLevel = document.getElementById( 'text-level' )
+
+const txtModal = document.getElementById( 'modal__text' )
+const txtModalColor = document.getElementById( 'modal__text-color' )
+
+const maxLevel = 5
 
 window.addEventListener( 'load',() => {
   btnRestart.disabled = true
+  btnStart.disabled = false
 } )
 
 btnStart.addEventListener( 'click', () => {
@@ -22,30 +29,41 @@ btnStart.addEventListener( 'click', () => {
 
 btnRestart.addEventListener( 'click', () => {
 
+  btnModalNo.classList.remove( 'ocultar' )
+  btnModalYes.textContent = 'Yes'
+  txtModal.textContent = 'Do you want restart the game?'
+  txtModalColor.textContent = ''
+  txtModalColor.style.color = '#c91616'
+
   window.newGame.removeDetectClick()
   
   return new Promise( function( resolve, reject ){
-    modalRestart.classList.toggle( 'ventana-cerrar' )
+    modal.classList.toggle( 'ventana-cerrar' )
     btnModalYes.addEventListener( 'click', () => {
-      resolve( 'Restarting the game...' )
+      resolve()
     } )
     btnModalNo.addEventListener( 'click', () => {
-      reject( 'Cancel' )
+      reject()
     } )
     
-  } ).then( value => {
-    console.log( value )
-    modalRestart.classList.toggle( 'ventana-cerrar' )
-    setTimeout( () => {
-      window.newGame = new game()
-    }, 2000)
+  } ).then( () => {
+    restartGame()
     
-  } ).catch( value => {
-    console.log( value )
-    modalRestart.classList.toggle( 'ventana-cerrar' )
+  } ).catch( () => {
+    modal.classList.toggle( 'ventana-cerrar' )
+    window.newGame.addDetectClick()
   })
 
 } )
+
+const restartGame = () => {
+  modal.classList.toggle( 'ventana-cerrar' )
+  setTimeout( () => {
+    window.newGame = new game()
+  }, 1500)
+
+  btnModalYes.removeEventListener( 'click', restartGame )
+}
 
 
 class game {
@@ -69,25 +87,26 @@ class game {
     this.numToString = this.numToString.bind(this)
     this.validateSelectedPart = this.validateSelectedPart.bind(this)
     this.tableEventClick = this.tableEventClick.bind(this)
+    this.confirmSelectPart = this.confirmSelectPart.bind(this)
     btnStart.disabled = true
     btnRestart.disabled = false
     this.createNewSequence()
-    console.log( this.sequence )
     this.showSequence()
     this.addDetectClick()
-    
+    txtLevel.innerHTML = this.actualLevel
   }
   
   nextLevel() {
-    this.subLevel = this.subLevel + 1
+    this.subLevel = 0
     this.actualLevel = this.actualLevel + 1
+    txtLevel.innerHTML = this.actualLevel
     this.showSequence()
     this.addDetectClick()
   }
   
   createNewSequence() {
     this.sequence = []
-    this.sequence = new Array(10).fill(0).map( n => Math.floor( Math.random() * 4 ) )
+    this.sequence = new Array(maxLevel).fill(0).map( n => Math.floor( Math.random() * 4 ) )
   }
   
   showSequence() {
@@ -132,22 +151,62 @@ class game {
   }
 
   validateSelectedPart( data ) {
-    // this.removeDetectClick()
     let selectedPart = parseInt(data.target.dataset.pieza)
     
     if ( selectedPart || selectedPart == 0 ) {
+      this.removeDetectClick()
       this.confirmSelectPart(selectedPart)
     }
 
   }
 
-  confirmSelectPart(s) {
-    this.illuminateButton(s)
+  confirmSelectPart( s ) {
+    this.illuminateButton( s )
     if ( s == this.sequence[this.subLevel] ) {
+
+      if ( this.subLevel == ( this.actualLevel - 1 ) ) {
+        if ( this.actualLevel == maxLevel ) {
+          setTimeout( () => {
+            this.alertWin()
+          }, 500 )
+        } else {
+          setTimeout( () => {
+            this.nextLevel()
+          }, 1000 )
+        }
+      } else {
+        this.subLevel = this.subLevel + 1
+        this.addDetectClick()
+      }
+    
+    } else {
       setTimeout( () => {
-        this.nextLevel()
-      }, 1000 )
+        this.alertLose()
+      }, 500 )
     }
+
+  }
+
+  alertWin() {
+    modal.classList.toggle( 'ventana-cerrar' )
+    btnModalNo.classList.add( 'ocultar' )
+    btnModalYes.textContent = 'Try Again'
+    txtModal.textContent = 'You '
+    txtModalColor.textContent = 'WIN'
+    txtModalColor.style.color = '#149c3d'
+
+    btnModalYes.addEventListener( 'click', restartGame )
+  }
+  
+  alertLose() {
+    modal.classList.toggle( 'ventana-cerrar' )
+    btnModalNo.classList.add( 'ocultar' )
+    btnModalYes.textContent = 'Try Again'
+    txtModal.textContent = 'You '
+    txtModalColor.textContent = 'LOSE'
+    txtModalColor.style.color = '#c91616'
+
+    btnModalYes.addEventListener( 'click', restartGame )
   }
 
 }
