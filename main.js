@@ -14,7 +14,7 @@ const txtLevel = document.getElementById( 'text-level' )
 const txtModal = document.getElementById( 'modal__text' )
 const txtModalColor = document.getElementById( 'modal__text-color' )
 
-const maxLevel = 5
+const maxLevel = 10
 
 
 table.addEventListener( 'click', value => {
